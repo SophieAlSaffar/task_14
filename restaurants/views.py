@@ -9,7 +9,7 @@ def restaurant_favorite(request, restaurant_id):
     restaurant_obj = Restaurant.objects.get(id=restaurant_id)
     if request.user.is_anonymous:
         return redirect('signin')
-    
+
     favorite, created = FavoriteRestaurant.objects.get_or_create(user=request.user, restaurant=restaurant_obj)
     if created:
         action="favorite"
